@@ -1,6 +1,6 @@
 # README
 
-All rights reserved. Comments are welcome!
+PhD thesis, defended on February 5th 2018. All rights reserved.
 
 ## Abstract
 
