@@ -2,6 +2,8 @@
 
 PhD thesis, defended on February 5th 2018. All rights reserved.
 
+# Quantum Phase Space Representations and Their Negativities
+
 ## Abstract
 
 A classical simulation scheme of quantum computation given a restricted set of states and measurements may be---occasionally, but only occasionally---interpreted naturally as a statistical simulation of positive quasi-probability distributions on a phase space. In this dissertation, we explore phase space representations for finite-dimensional quantum systems and their negativities beyond the usual analogues of the Wigner function.
