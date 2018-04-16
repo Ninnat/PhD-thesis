@@ -1,0 +1,63 @@
+\newcommand\rep{U}
+\setlength\epigraphwidth{8.5cm}
+\epigraph{I must finish what I've started, even if, inevitably, what I finish turns out not to be what I began.}{--- Salman Rushdie}
+% Midnight's Children
+
+This dissertation consists mainly of the following two research programs:
+\begin{itemize}
+	\item Find a generalization of the quantum Bochner's theorem, which simultaneously characterizes the set of valid quasi-probability distributions and the subset of non-negative ones in a given quasi-probability representation. (Chapter \ref{ch:commutative-phase-space})
+	\item Find a quasi-probability representation that somehow reflects a classically simulatable subtheory of quantum theory. (Chapter \ref{ch:quasi-rep} and \ref{ch:matchgate})
+\end{itemize}
+Each program led us to what appears to be a different way to construct quasi-prob\-abi\-li\-ty representations out of groups. Let us summarize what we did.
+
+After an overview of representation theory in Chapter \ref{ch:rep}, we formally introduce quasi-probability representations in Chapter \ref{ch:quasi-rep}. Focusing on finite-dimensional quantum systems, each quasi-probability representation is associated with a frame and a dual frame for $\mathbb{H}(\mathbb{C}^d)$, the real vector space of Hermitian operators over $\mathbb{C}^d$, where density operators and POVM elements live.
+
+Valid probability densities can be characterized by properties of their Fourier transforms, the characteristic functions, by Bochner's theorem. The theorem easily generalizes by considering the notion of Fourier transform on a general group (\autoref{ch2:fourier-transform}). Given a unitary (ordinary or projective) representation $\{\rep(g)\}$ of a group $G$, we defined the quantum characteristic function of a density operator $\rho$ in Chapter \ref{ch:commutative-phase-space} to be the expectation value
+\begin{align}
+\phi_\rho(g) &=  \Tr[\rep(g) \rho].
+\end{align}
+For this quantity to be a Fourier transform of some quasi-probability distribution so that we could apply Bochner's theorem, the Fourier transform of the unitary operators $\{\rep(g)\}$ themselves must be a frame that defines a quasi-probability representation. We could not obtain such a (Hermitian) frame when $G$ is non-abelian. Instead, $\{\rep(g)\}$ must be a non-trivial projective representation of an abelian group $G$. Given such a representation, we showed that the resulting quasi-probability representation possesses a quantum Bochner's theorem (Theorem \ref{thm:main-bochner}). Further, we characterized the form that such a group $G$ must take and gave examples of quasi-probability representations with a quantum Bochner's theorem in low dimensions, which includes Gibbons' \cite{gibbons_discrete_2004} and Gross' phase space representations \cite{gross_hudsons_2006}.
+
+The construction by Brif and Mann \cite{brif_phase-space_1999} outlined in \autoref{ch3:SW} is an answer to how to build quasi-probability representations from non-abelian groups. One of our contributions is a more deductive derivation of Brif and Mann's construction starting from the kernel
+\begin{align}
+	\rker{ss'}(\Omega,\Omega') \coloneqq \Tr [F(\Omega,s) F(\Omega',-s')]
+\end{align}
+that relates $G$-covariant frames at different values of the parameter $s$:
+\begin{align}
+	F(\Omega,s) &= \int d\Omega'\,\rker{ss'}(\Omega,\Omega') F(\Omega',s').
+\end{align}
+In particular, $F(\Omega,-1)$ is stipulated to be the $G$-coherent state $\ketbra{\Omega}{\Omega}$. Then the Stratonovich-Weyl (SW) correspondence and the differentiability of $F(s)$ with respect to $s$ imply the essential uniqueness of the frames, as stated in Theorem \ref{thm:brif-mann-frame}. In particular, the frame for $s=0$ is unique. We call these frames SW frames and the representations SW representations. 
+
+The construction process commences by choosing three ingredients: a Lie group $G$, its unitary representation $\rep$ on a Hilbert space $\hilb$, and a fiducial state $\ket{e} \in \hilb$. If $\ket{e}$ is the highest weight state of $\rep$, then the phase space has more structure, namely the symplectic and K{\"a}hler structures (Appendix \ref{app:kahler}). The $G$-coherent states
+\begin{align}
+	\ket{\Omega} = \rep(\Omega)\ket{e}
+\end{align}
+are identified with phase points $\Omega = gK$ in the phase space $G/K$, where $K$ is the stabilizer of $\ketbra{e}{e}$. We showed that the quasi-probability functions of $G$-coherent states (for any $s$) are drawn, not from the entire space $L^2(G/K)$ of square-integrable functions on $G/K$, but only from irreps $\{V_{\mu}\}$ that make up the space of linear operators over $\hilb$
+\begin{align}
+\text{End}(\hilb) &\stackrel{G}{\simeq} \bigoplus_{\mu \in \hat{G}} \bigoplus^{n_{\mu}} V_{\mu}.
+\end{align}
+In other words, only low frequency components enter the quasi-probability functions of $G$-coherent states.
+
+The construction was then applied to the classically simulatable problem of fermionic linear optics or equivalently, by the Jordan-Wigner transformation, nearest neighbor (N.N.) matchgates in Chapter \ref{ch:matchgate}. The $\gr{SO}{2n}$-coherent states are the $n$-mode (pure) fer\-mi\-on\-ic Gaussian states generated from the highest weight state of the even spinor representation $2^{n-1}_+$, the vacuum. In this case, the stabilizer of the vacuum is the number-preserving subgroup isomorphic to $\gr{U}{n}$, which can be characterized explicitly as a subgroup consisting of all matrices that are both orthogonal and symplectic. $\homsp{SO}{2n}{U}{n}$ is not just any homogeneous space; it is symmetric and hence multiplicity-free (\autoref{ch2:gelfand}). Thus, there is a unique (zonal) spherical function associated to each inequivalent irrep $V_{\mu}$ and, as shown in \autoref{ch3:construction}, the quasi-probability functions of the $G$-coherent states are spanned by these spherical functions. Finally, we arrived at the fact that the Gaussian quasi-probabilities are negative. Therefore, anyone who would like to come up with a fermionic quasi-probability representation that exhibits non-negative quasi-probabilities for the Gaussian states and the Gaussian measurements would need to break some assumptions of the SW representations.
+
+We would have a cleaner connection to classical simulatability if we had found a non-negative subtheory for matchgate computation. One possibility is that no such subtheory exists. This is the case for multi-qubit stabilizer circuits, where the three-qubit GHZ states and Pauli measurements demonstrate (Kochen-Specker) contextuality; thus, it is contextual in the generalized sense of Spekkens \cite{spekkens_negativity_2008} and therefore has no non-negative subtheory. (Though, there is no natural notion of locality in our $n$-qubit phase space, not being the Cartesian product of a phase space for each individual qubit.) During the course of this project, we were informed by Brod \cite{brod-CHSH} that four-qubit N.N. matchgates can be used to violate the Bell-CHSH inequality. Thus, it is likely that matchgate computation also has no non-negative subtheory. %Proving contextuality using the Mermin-Peres square also seems like a dead end because matchgate does not allow even a very simple correlated measurements such as the $Z$-parity measurement $ZZ$, as it indeed promotes N.N. matchgates to universality.
+Nevertheless, outcome probabilities from negative quasi-probabilities can still be efficiently estimated as long as the negativity does not grow too fast \cite{pashayan_estimating_2015}. Thus, we would like to have a uniform construction of our fermionic quasi-probability representations for all numbers of modes $n$. We have made some progress on this front that will be reported elsewhere; for example, we could calculate the singlets and spherical functions for any $n$, and we believe that the frame operator at the origin $\Omega=0$ can be obtained from just the $\gr{U}{n}$-singlets and the complex conjugation operators. But at the time of writing, we do not yet know how to directly obtain the integrated negativity of Gaussian quasi-probability distributions, as it seems to require actually doing the integral for each $n$ and every $n$. %Simulating quasi-probabilities on a computer also mean that we want to discretize the phase space. There is a numerically stable way to discretize a sphere into symmetric grids. Is there something like that for higher dimensional homogeneous spaces?
+
+A broader perspective one can take going forward in this project is the study of general SW phase spaces in their own rights. SW phase spaces covariant to ``classical", restricted dynamics (subgroups of the full unitary group) may provide novel theoretical tools to think about physics akin to the Wigner function. There are other physically significant phase spaces for fermions identified in \cite{zhang_coherent_1990} such as the number-preserving phase space,
+\begin{align}
+\faktor{\gr{U}{n}}{\gr{U}{k} \times \gr{U}{n-k}},\nonumber
+\end{align} 
+and the parity-non-preserving phase space $\homsp{SO}{2n+1}{U}{n}$. For bosons, the construction of SW phase spaces when applied to the Weyl-Heisenberg group yields the Wigner, P, and Q functions as well as all the quantum optical $s$-parametrized quasi-probability representations \cite{brif_phase-space_1999}. Let us call these representations the \emph{linear} bosonic representations. Among them, the Wigner function, and only the Wigner function, is covariant with respect to the symplectic group $\gr{Sp}{2n,\mathbb{R}}$. But one could also have \emph{quadratic} phase spaces covariant with respect to the full symplectic group $\gr{Sp}{2n,\mathbb{R}}$ for every $s$. How do the quadratic and linear SW representations relate to one another? (The Wigner function is singled out from other linear bosonic representations by the \emph{marginal property} \cite{bertrand_tomographic_1987}: integrating the Wigner function $\mu_{\rho}$ along the line $aq+bp=c$ yields the probability to obtain the result $c$ upon measuring the observable $aQ+bP$. It is far from clear whether the Wigner function can be retrieved from the construction of quadratic bosonic representations.) For every SW phase space, one can ask for the characterization of positive (and valid) quasi-probability distributions:
+\begin{itemize}
+	\item Do the $G$-coherent states possess positive quasi-probability distributions?
+	\item Is there any pure state that has a positive quasi-probability distribution?
+	\item When do mixed states, for instance, thermal states at certain temperatures, have positive quasi-probability distributions?
+	\item Is there some version of a quantum Bochner's theorem that characterizes SW quasi-probability distributions by their Fourier transforms? (How exactly is the abelian construction in Chapter \ref{ch:commutative-phase-space} a special case of the Brif and Mann's construction? Is there a similar construction that applies to finite groups as well?)
+\end{itemize}
+Another open question is the relation between our fermionic phase spaces and other existing fermionic phase spaces, for instance, those that employ Grassmann variables \cite{cahill_density_1999,dalton2014phase} or the Q functions in \cite{corney_gaussian_2006-1,corney_gaussian_2006,rosales-zarate_probabilistic_2015} (which actually have support over a much larger, complexified phase space covariant under $\gr{SO}{4n}$, not $\gr{SO}{2n}$).
+
+Still lacking is an operational significance of SW phase spaces---something that makes the Wigner function an appealing way to think about homodyne and heterodyne measurements and quantum tomography. The two-dimensional slice of the full twelve-dimensional Wigner function in Figure \ref{fig:wigner} does not give a probability density upon integrating out a variable in any obvious way. Could the symplectic structure on the phase spaces play any role in ferreting out the marginal structure? Elaborating further structures, expected or unexpected, of SW phase spaces is necessarily the key to more applications of them.
+
+
+
+%{\cmc You should now read through this conclusion and see if you like it and whether it can be made more user-friendly by adding on some more words.  In particular, you really can't end it with a question.  You need to end with some other kind of summary, a sort of summary of the questions.  Is there a theme to these questions, or are they just randomly pulled out of a hat?} 

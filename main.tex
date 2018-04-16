@@ -1,0 +1,204 @@
+\documentclass{unmeethesis}
+%\setcounter{tocdepth}{4}
+%\setcounter{secnumdepth}{4}
+\usepackage[titletoc]{appendix}
+\makeatletter
+\renewcommand\backmatter{
+    \def\chaptermark##1{\markboth{%
+        \ifnum  \c@secnumdepth > \m@ne  \@chapapp\ \thechapter:  \fi  ##1}{%
+        \ifnum  \c@secnumdepth > \m@ne  \@chapapp\ \thechapter:  \fi  ##1}}%
+    \def\sectionmark##1{\relax}}
+\makeatother
+\usepackage[bottom = 1 in]{geometry}
+
+\input{Qcircuit}
+\usepackage{amsmath}
+\usepackage{amsfonts,amssymb,amsthm, bbm,braket}
+\usepackage{graphicx}   % need for figures
+\usepackage{subfigure}  % and subfigures
+\usepackage{amsbsy} % for bold greek letters
+\usepackage[bold]{hhtensor}
+\usepackage[multiple]{footmisc}
+\usepackage{epigraph} % inspirational quotes
+%\usepackage[all]{xy} % commutative diagrams and dynkin diagrams
+\usepackage{tikz} % commutative and dynkin diagrams
+\usepackage{mathtools} % math equal, inclusion arrows
+\usepackage{dsfont}
+\usepackage{etoolbox}
+\usepackage{adjustbox} % for \bwedge
+\usepackage{float}
+\usepackage{faktor}
+\usepackage{xcolor}
+\usepackage{lipsum} % for block quotes
+
+%--MACROS--
+
+\preto\chapter{\undef\rep} % \rep must be redefined at the beginning of every chapter if needed
+
+\newcommand\id{\mathbbm 1}
+\newcommand\Tr{\mathrm{Tr}}
+\newcommand{\ketbra}[2]{\ket{#1}\bra{#2}}
+\newcommand\krep{\sigma} % representation of subgroup
+\newcommand{\gr}[2]{\text{#1}(#2)} % linear group
+\newcommand{\homsp}[4]{\text{#1}(#2)/\text{#3}(#4)} % homogeneous space
+\newcommand{\al}\mathfrak % Lie algebra
+\newcommand{\ind}[3]{\text{Ind}_{#2}^{#3} {#1}} % induced representation
+\newcommand{\res}[3]{\text{Res}^{#2}_{#3} {#1}} % restricted representation
+\newcommand{\coind}[3]{\text{Coind}_{#2}^{#3} {#1}} % coinduced representation
+\newcommand\mat[2]{\mathbb{M}_{#1 \times #2}(\mathbb{R})} % real matrices; \matr is already defined
+\newcommand\matc[2]{\mathbb{M}_{#1 \times #2}(\mathbb{C})} % complex matrices
+\newcommand\adrep{\text{ad}\,} % adjoint representation
+\newcommand\Adrep{\text{Ad}\,} % Adjoint representation
+\newcommand{\kil}[2]{\text{Kill}(#1,#2)} % Killing form
+\newcommand{\ran}{\text{rank}\,} % rank
+\newcommand\norm[1]{\|#1\|}
+\newcommand\hilb{\mathcal{H}}
+\newcommand\herm{\mathbb H(\hilb)}
+\newcommand\rker[1]{\mathcal{K}_{#1}} % reproducing kernel
+\newcommand\dgg{^{\dagger}} % Hermitian conjugate
+\newcommand{\bwedge}{\mathord{\adjustbox{valign=m,totalheight=.5\baselineskip}{$\bigwedge$}}} % medium-sized wedge
+
+% Round bra-ket
+\newcommand{\rket}[1]{|#1)}
+\newcommand{\rbra}[1]{(#1|}
+\newcommand{\rketbra}[2]{\rket{#1}\rbra{#2}}
+
+%---------------------------Chris' Macro from the quantum Bochner paper
+
+\newcommand\unit{\mathbb U(\mathcal H)}
+\newcommand\den{\mathbb D(\mathcal H)}
+\newcommand\eff{\mathbb E(\mathcal H)}
+\newcommand\proj{\mathbb P(\mathcal H)}
+\newcommand\povm{\mathrm{POVM}(\mathcal H)}
+\newcommand\pvm{\mathrm{PVM}(\mathcal H)}
+\newcommand\range{\mathrm{Ran}}
+\newcommand\domain{\mathrm{Dom}}
+\newcommand\conv{\mathrm{conv}}
+\newcommand\spec{\mathrm{spec}}
+\newcommand\freq{\frac{2\pi i}{n}}
+\newcommand\w[1]{e^{\freq #1}}
+\newcommand\ip[2]{\langle#1 | #2\rangle}
+\newcommand\op[2]{|#1\rangle\!\langle#2|}
+\newcommand\abs[1]{\left|#1\right|}
+\newcommand\av[1]{\left\langle #1 \right\rangle}
+\newcommand\conj[1]{#1^*}
+%---------------------------
+
+\newcommand\nd{\color{red}}
+\newcommand\cmc{\color{magenta}}
+\newcommand\csj{\color{blue}}
+
+%--U(4) root color
+
+\definecolor{onetwo}{RGB}{33,140,141}
+\definecolor{twothree}{RGB}{239,113,38}
+\definecolor{threefour}{RGB}{71,62,63}
+\newcommand\onetwo{\color{onetwo}}
+\newcommand\twothree{\color{twothree}}
+\newcommand\threefour{\color{threefour}}
+\def\cmccomment#1{{\tt#1}}
+
+%--ENVIRONMENTS--
+
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{question}{Question}
+
+\usepackage[breaklinks=true]{hyperref}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = magenta %Colour of citations
+}
+\renewcommand{\sectionautorefname}{\S}
+\renewcommand{\subsectionautorefname}{\S}
+\renewcommand{\subsubsectionautorefname}{\S}
+
+\begin{document}
+\frontmatter
+
+\title{Quantum Phase Space Representations and Their Negativities}
+
+\author{Ninnat Dangniam}
+
+\degreesubject{Ph.D., Physics}
+
+\degree{Doctor of Philosophy \\ Physics}
+
+\documenttype{Dissertation}
+
+\previousdegrees{B.S., Physics, University of Oregon, 2011 \\
+B.S., Mathematics, University of Oregon, 2011}
+
+\date{April 2018}
+
+\maketitle
+
+\makecopyright
+
+%{\cmc Once CJ has read this again and you have sent the thing off to the committee (by Feb 15, let's say), you will need to check through the whole thing carefully to bring everything into consistency: mathematical notation consistent throughout, punctuation (especially of equations) and grammar styles the same throughout.  For example, you need to decide whether you are referring to sections with Section or with the symbol.  You need to adhere to the convention that the m-dash (---) is used for interruptions in a sentence; there are m-dashes at both ends of the interruptions, and these are not separated by spaces from surrounding text.  Among other things, I think you need all your footnotes to start with a capital letter and end with a period, even if they are phrases; you're currently using many footnotes to accommodate what might better be parenthetical phrases, and you might think about actually making some of them parenthetical phrases (since they will be noticed better that way).
+
+%You probably also should look through the references for things like the following.  Shouldn't Braunstein and Bravyi have different abbreviations?  What about the title of Bra06, which has some uncompiled LaTeX in it?
+
+%You are going to need of you are going to capitalize boson, bosonic, fermion, and fermionic and be consistent throughout.}
+
+%{\nd I have fixed all the missing diacritics and strayed uncompiled LaTeX that I could find in the bibliography. I wasn't yet able to distinguish the abbreviations of Braunstein and Bravyi; using \textbackslash disambiguate throws me a compiling error.
+
+%I went through all the footnotes and put them into the main text whenever appropriate. But I have a feeling that my decisions might not be that consistent throughout, so I will go though everything again. I've so far reread and fixed the first 2 chapters. FYI, CJ didn't have a chance to finish rereading the thesis before I sent it off to the committee.}
+
+\input{chapters/acknowledgments}
+
+\input{chapters/abstract}
+
+\tableofcontents
+
+\listoffigures
+
+\mainmatter
+
+%\input{chapters/symbol-list}
+
+\chapter{Introduction}\label{ch:intro}
+\input{chapters/intro}
+
+%\chapter{Frames and Quasi-Probabilities}
+%\input{chapters/chapter2}
+
+\chapter{Representation theory}\label{ch:rep}
+\input{chapters/representation}
+
+\chapter{Quasi-Probability Representations}\label{ch:quasi-rep}
+\input{chapters/quasi-rep}
+
+\chapter{Commutative Phase Spaces}\label{ch:commutative-phase-space}
+\input{chapters/commutative-phase-space}
+
+\chapter{Fermionic Phase Spaces}\label{ch:matchgate}
+\input{chapters/matchgate}
+
+%\chapter{Fermionic Phase Spaces}\label{ch:fermion-phase-space}
+%\input{chapters/fermion-phase-space}
+
+\chapter{Summary and Open Problems}\label{ch:open-problems}
+\input{chapters/open-problems}
+
+\backmatter
+\begin{appendices}
+
+\chapter{Proof of the Discrete Hudson's Theorem}\label{app:hudson}
+\input{chapters/discrete-hudson-thm}
+
+\chapter{Measure on Homogeneous K{\"a}hler Manifolds}\label{app:kahler}
+\input{chapters/kahler}
+
+\end{appendices}
+
+\bibliographystyle{abbrv-alpha-letters-links}
+\bibliography{bibliography/main-bib,bibliography/zotero-intro,bibliography/rep-theory,bibliography/zotero-fermion,bibliography/zotero-quasi-rep,bibliography/zotero-tensor-network}
+\bibliographystyle{plain}
+
+\end{document}

@@ -1,0 +1,85 @@
+We provide here a complete proof of the discrete Hudson's theorem, following a sketch in an unpublished talk by Gross \cite{gross2015coogee}.\footnote{I am grateful to Marcus Appleby for sharing his extensive knowledge on discrete Wigner functions and pointing out the group property of the frame for Gross's Wigner function.}
+
+Hudson's theorem states that the Wigner function of a pure state is positive if and only if it is Gaussian \cite{hudson_when_1974}. The theorem in the multi-mode scenario and other generalizations was given in \cite{soto_when_1983,toft_hudsons_2006} and references therein. In the discrete case we have
+
+\begin{theorem}{\normalfont (Discrete Hudson's theorem)}
+	Gross' Wigner function \eqref{ch4:gross-wigner-function} of a pure state $\ket{\psi}$ is positive if and only if $\ket{\psi}$ is a stabilizer state
+	{\normalfont \cite{gross_hudsons_2006,gross_non-negative_2007}.}
+\end{theorem}
+
+\emph{Stabilizer states} were originally defined for multiple qubits \cite{gottesman_stabilizer_1997} and have a plethora of applications in quantum error correction and quantum computation \cite{fujii2015quantum}.
+In odd dimensions, they have the following equivalent characterizations:
+\begin{enumerate}
+	
+	\item\label{def-stabilizer} Each stabilizer state is a joint eigenvector of a \emph{stabilizer subgroup} -- a maximal abelian subgroup of the generalized Pauli group $\mathcal{P}_d$.
+	
+	\item\label{clifford-orbit} Stabilizer states are the orbit of the state $\ket{0}$ under the Clifford group.
+	
+	\item\label{gaussian-wave-function} Their wave functions have a Gaussian form in the standard basis $\{\ket{m}\mid m=0,\dots, d-1 \}$
+	\begin{align}
+	\psi(m) = \omega^{mAm + bm},
+	\end{align}
+	where $A$ is a symmetric matrix with entries in $\mathbb{Z}_d$ and $b \in \mathbb{Z}_d$. %{\cmc Is there a difference between the sub and superscript $d$?}
+	
+\end{enumerate}
+Properties \ref{clifford-orbit} and \ref{gaussian-wave-function} especially affirm the status of stabilizer states as the natural discrete analogue of Gaussian states.
+
+To prove the discrete Hudson's theorem in one direction, one computes the discrete Wigner function of all stabilizer states directly and observes that they are positive. In fact, the support of a stabilizer state always lies on a line (as defined in finite geometry) \cite{gross_hudsons_2006}, so they are more like infinitely squeezed states.
+
+A short proof in the other direction given in an unpublished talk by Gross \cite{gross2015coogee} can be summarized as follows: a positive discrete Wigner function of
+a pure state simultaneously maximizes the 2-norm and minimizes the 1-norm, forcing it to be a stabilizer state.
+\begin{lemma}
+	\label{lem:supp_size}A positive Wigner function $\mu_{\psi}$ of
+	a pure state $\rho= \ketbra{\psi}{\psi}$ must be constant on
+	its support of size $d$.
+\end{lemma}
+\begin{proof}
+	We want to bound the 2-norm of $\rho$,
+	\begin{align}
+	\norm \rho_{2}^{2} & = \Tr (\rho^{\dagger}\rho)
+	= \sum_{j,k} |\rho_{jk}|^{2}.
+	\end{align}
+	Every displacement operator except $\id$ has zero trace, so the trace of $A(0,0)$ and thus every phase point operator is 1. Moreover, $ \{ A({\bf u})/\sqrt{d} \} $ is an orthonormal basis because $A({\bf u})$ squares to the identity. Therefore,
+	\begin{align}
+	\frac{1}{d} \le  \sum_{j,k} |\rho_{jk}|^{2} &= \frac{1}{d} \sum_{{\bf u}} \left| \Tr [A({\bf u}) \rho] \right|^2 \le 1.
+	\end{align}
+	$\rho$ is a pure state if and only if $ \norm \rho _{2}^{2} = \Tr (\rho^2) = 1$, which means that on the one hand,
+	\begin{align}
+	\sum_{{\bf u}} |\braket{\psi|A({\bf u})|\psi}|^2 &= d, \label{eq:2-norm}
+	\end{align}
+	i.e. the 2-norm is maximized. On the other hand,
+	\begin{align}
+	\sum_{{\bf u}} \braket{\psi|A({\bf u})|\psi} &= d.
+	\end{align}
+	Every term in the sum is positive if and only if its 1-norm is minimized
+	\begin{align}
+	\sum_{{\bf u}} |\braket{\psi|A({\bf u})|\psi}| &= d.\label{eq:1-norm}
+	\end{align}
+	Each term in the sum can be bounded by the sum of the product of the singular values using von Neumann's trace inequality:
+	\begin{align}
+	|\Tr(AB)| &\le \sum_j a_j b_j,\label{eq:trace_ineq}
+	\end{align}
+	where $a_{j}$ and $b_{j}$ are singular values of $A$ and $B$ respectively,
+	ordered by their magnitudes. The bound is saturated if and only if $A$ and
+	$B$ are normal and commute. Since $\rho$ is a rank-one projection
+	operator, we only need the largest singular value of $A({\bf u})$,
+	which is 1,
+	\begin{align}
+	|\braket{\psi|A({\bf u})|\psi}| &\le \norm{A({\bf u})}_{\infty} = 1\label{eq:baby_holder_ineq}
+	\end{align}
+	But if this bound is not saturated, the 2-norm will not reach the
+	maximum. To saturate the bound, $\mu_{\rho}$ can have a support only
+	on $d$ points and $\ket{\psi}$ must be a joint eigenvector of $d$
+	phase point operators.
+\end{proof}	
+
+\noindent In particular, $\ket{\psi}$ is an eigenvector of every product of these $d$ phase point operators, which makes it also an eigenvector of some displacement operators because
+\begin{align}\label{phase-point-clifford}
+	A({\bf u}) A({\bf v})
+		&= \left( D\dgg ({\bf u}) A({\bf 0}) D ({\bf u}) \right)
+			\left( D\dgg ({\bf v}) A({\bf 0}) D ({\bf v}) \right) \nonumber \\
+		&= \omega^{-[{\bf u,v}]/2} D({\bf -u})	\left[ A({\bf 0}) D ({\bf u-v}) A({\bf 0}) \right] D ({\bf v}) \nonumber \\
+		&= \omega^{-[{\bf u,v}]/2} D({\bf -u})D ({\bf v-u}) D ({\bf v}) \nonumber \\
+		&= \omega^{-2 [{\bf u,v}]} D(2{\bf v} - 2{\bf u}).
+\end{align}
+When ${\bf w = v-u} \neq 0$, $2{\bf w}$ is never zero since $d$ is odd. So for a given ${\bf w}$, $\ket{\psi}$ is an eigenvector of $d$ commuting displacement operators $\{ \id, D({\bf w}), \dots, D^{d-1}({\bf w}) \}$ and there can be no more than $d$ commuting displacement operators since $D({\bf w})$ has period $d$. $\ket{\psi}$ is therefore a stabilizer state and the discrete Hudson's theorem is proved. 

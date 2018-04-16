@@ -1,0 +1,117 @@
+The integration measure on the phase space can be obtained from the line element denoted by $ds^2$. The $d$-dimensional Euclidean line element is, for example,
+\begin{align}
+	ds^2 &= \sum_{j=1}^d dx^j \otimes dx^j.
+\end{align}
+The superscript signifies that $dx^j$ are dual vectors (i.e. forms).
+For a vector $\ket{\psi} = \sum_j^dz_j \ket{e_j}$ in a complex vector space $\mathbb{C}^d$, a small displacement
+\begin{align}
+	\ket{d\psi} &= \sum_{j=1}^d dz^j \ket{e_j}
+\end{align}
+gives rise to the line element
+\begin{align}
+	ds^2 &= \braket{d\psi|d\psi} = \sum_{j=1}^d dz^j \otimes dz^{j*}.
+\end{align}
+The inner product $\braket{d\psi|d\psi}$ in $\mathbb{C}^d$ does not give a line element on the complex projective space $\mathbb{C}P^{d-1}$; one has to project it back to $\mathbb{C}P^{d-1}$ by subtracting off the part orthogonal to the manifold:
+\begin{align}
+ds^2 &= (\bra{d\psi} - \braket{d\psi | \psi} \bra{\psi} )( \ket{d\psi} - \ket{\psi} \braket{\psi | d\psi} ) \\
+&= \braket{d\psi | d\psi} -  \left| \braket{\psi | d\psi} \right|^2,
+\end{align}
+obtaining the celebrated \emph{Fubini-Study metric} \cite{caves2001measures}.
+
+For a $d$-level system, a manifold of $G$-coherent states is a submanifold of $\mathbb{C}P^{d-1}$.
+Suppose that we have a sequence $U=U_n \cdots U_1$ of unitary operators $U_j = \exp(i\theta^{\mu} J_j)$ that generates a $G$-coherent state $\ket{\Omega}$ from the fiducial state $\ket{e}$:
+\begin{align}
+	\ket{\Omega} &= U\ket{e} = U_n \cdots U_1 \ket{e},
+\end{align}
+then a small displacement is given by
+\begin{align}
+\ket{d\Omega} &= dU(\Omega) \ket{e} = dU(\Omega) U^{-1}(\Omega) \ket{\Omega}
+= iX_j \ket{\Omega} d\theta^j,
+\end{align}
+where
+\begin{align}
+i X_j &= U_n \cdots U_{j+1} J_j U_{j+1}\dgg \cdots U_n\dgg,
+\end{align}
+and repeated indices are summed over.
+The line element for the submanifold of $G$-coherent state induced by the Fubini-Study metric is
+\begin{align}
+ds^2 &= \left( \braket{\Omega |X_{j} X_{k}| \Omega} - \braket{\Omega | X_{j} | \Omega} \braket{\Omega | X_{k} | \Omega} \right) d\theta^{j} \otimes d\theta^{k}, \\
+	&=  \left( \braket{e|Y_{j}(\Omega) Y_{k}(\Omega)|e} - \braket{e| Y_{j}(\Omega) |e} \braket{e| Y_{k}(\Omega) |e} \right) d\theta^{j} \otimes d\theta^{k},
+\end{align}
+where $Y_{j}(\Omega)$ is the displaced generator
+\begin{align}
+i Y_{j} = U_1\dgg \cdots U_{j-1}\dgg J_{j} U_{j-1} \cdots U_1.
+\end{align}
+The (symmetric) real part of $ds^2$ is a Riemannian metric
+\begin{align}
+	g_{jk} &= \frac{1}{2} \braket{\Omega | \{X_j, X_k\} | \Omega} - \braket{\Omega | X_j | \Omega} \braket{\Omega | X_k | \Omega},
+\end{align}
+and the measure is
+\begin{align}
+	d\Omega &= \sqrt{|\det g_{jk}|} d\theta^j \otimes d\theta^k.
+\end{align}
+
+%The manifold of Gaussian states is not only even-dimensional but also K{\"a}hler, being an orbit of the highest weight state \cite{onofri_note_1975}. The fact that the complex projective space $\mathbb{C}^{2^n-1}$ is also K{\"a}hler with the Fubini-Study metric as the Hermitian metric suggests that we look at the induced metric on the phase space:
+
+In $\mathbb{C}P^{d-1}$ and any of its ``complex" submanifolds, something special occurs. Recall that in $\mathbb{C}^d \simeq \mathbb{R}^{2d}$ (which is also the classical phase space), we have the Hermitian inner product
+\begin{align}
+	\braket{u,v} &= \sum_{j=1}^d u_j^* v_j,
+\end{align}
+the symmetric inner product
+\begin{align}
+	g(x,y) &= \sum_{j=1}^{2d} x_j y_j,
+\end{align}
+and the symplectic bilinear form
+\begin{align}
+	\omega(x,y) &= g(Jx, y) = \sum_{j=1}^{2d} \left( x_j y_{d+j} - x_{d+j} y_j \right),
+\end{align}
+where
+\begin{align}\label{ch3:eq:almost-complex-structure}
+	J &= \begin{pmatrix}
+	{\huge 0} & -\id \\
+	\id & {\huge 0}
+	\end{pmatrix}
+\end{align}
+plays the role of the imaginary unit $i$. The three bilinear forms fit together in the identity
+\begin{align}
+	\braket{u,v} &= g(u,v) + i\omega(u,v),
+\end{align}
+where $u$ and $v$ on the right hand side are understood to be $2d$-long vectors of real and imaginary parts of $u$ and $v$. We would like to generalize this scenario to a more general manifold that cannot be covered by a single chart. Let $J$ be a $(1,1)$-tensor field on a real, even-dimensional manifold $M$ that squares to minus the identity
+\begin{align}
+	J^2 &= -\id.
+\end{align}
+At each point $p$ in $M$, $J_p$ has a diagonal form
+\begin{align}
+	J_p &= \begin{pmatrix}
+		i\id & {\huge 0} \\
+		{\huge 0} & -i\id
+		\end{pmatrix}
+\end{align}
+in the basis
+\begin{align}
+	Z_j = X_j + iX_{d+j}, &&
+	Z^*_j = X_j - iX_{d+j},
+\end{align}
+of the complexified tangent space.
+If we can keep the diagonal form of $J_p$ while varying the base point $p$ by a coordinate transformation of $\{Z_j\}$ that depends only on $\{Z_j\}$ and not $\{Z^*_j\}$ (that is, the transition function is holomorphic), then the manifold $M$ is called \emph{complex}. A complex manifold always admit a Hermitian metric $\braket{\, ,\,}$ such that
+\begin{align}
+	\braket{u,v} &= g(u,v) + i\omega(u,v),
+\end{align}
+with $g$ a Riemannian metric and $\omega$ a non-degenerate, anti-symmetric bilinear form. When the form is closed,
+\begin{align}
+	d\omega &= 0,
+\end{align}
+---that is, when $\omega$ is a symplectic form---the manifold is \emph{K{\"a}hler} \cite{BZ,kobayashi1969foundations,nakahara2003geometry}.
+Complex projective spaces are exemplars of K{\"a}hler manifolds, with the Fubini-Study metric as the Hermitian metric. Every complex submanifold of a complex projective space inherits the K{\"a}hler structure with the induced metric \cite[Example 6.7, p.164]{kobayashi1969foundations}. More generally, any orbit of a highest weight state, thus any Gilmore's phase space, is guaranteed to be K{\"a}hler \cite{onofri_note_1975}.
+On a K{\"a}hler manifold, the $n$th anti-symmetric power of the symplectic form
+\begin{align}
+	d\Omega &= \frac{1}{n!}\bwedge^n \omega,
+\end{align}
+agrees with the integration measure obtained from the metric. 
+
+To summarize, when the phase space is K{\"a}hler, the Riemannian metric and the symplectic form are
+\begin{align}
+	g_{jk} &= \frac{1}{2} \braket{\Omega | \{X_j, X_k\} | \Omega} - \braket{\Omega | X_j | \Omega} \braket{\Omega | X_k | \Omega}, \\
+	\omega_{jk} &= \frac{1}{2i} \braket{\Omega | [X_j, X_k] | \Omega},
+\end{align}
+and both lead to the same integration measure $d\Omega$. 

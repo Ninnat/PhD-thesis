@@ -1,0 +1,440 @@
+\setlength\epigraphwidth{8.5cm}
+\epigraph{If a physical theory for calculating probabilities yields a negative probability for a given situation under certain assumed conditions, we need not conclude the theory is incorrect. Two other possibilities of interpretation exist. One is that the conditions... may not be capable of being realized in the physical world. The other possibility is that the situation for which the probability appears to be negative is not one that can be verified directly.}{--- \textup{Richard Feynman}}
+
+%------------------------------------
+\section{The operational definition}
+%------------------------------------
+
+How do we reformulate quantum expectation values as averages over phase space distributions? Let us consider the operational content of quantum theory, stripped of any technical features such as Hilbert spaces and wave functions. An operational theory consists of three primitive notions of an agent's interaction with the world: \emph{preparation}, \emph{measurement} and \emph{outcome} \cite{hardy_quantum_2001, spekkens_contextuality_2005, ferrie_quasi-probability_2011}. A preparation $P$ is an action that readies the object for our experiment, the system, perhaps by turning a knob on a black box to a certain position. A measurement $M$ is any procedure done on the system that results in an outcome, which is an event $k$ from a set $K$ of all possible mutually exclusive possibilities. The set $K$ is considered to be independent of the specific measurement $M$. A measurement device, for example, may have a light that turns on or off when a measurement is made regardless of the (possibly unknown) choice of the measurement.
+
+Physically distinct preparation procedures can create systems that are indistinguishable by any means of measurements one can do. Likewise, physically distinct measurement procedures may give the same measurement of properties given any preparation. So when we say ``a preparation", we mean an equivalence class of preparations $P$, and ``a measurement" means an equivalence class of measurements $M$. Since a theory need not be deterministic, we have probabilities $\text{Pr}(k|P,M)$ of obtaining the outcome $k$ given a preparation $P$ and a measurement $M$ such that
+\begin{align}
+\sum_{k \in K} \text{Pr} (k|P,M) &= 1.
+\end{align}
+(Whenever there is a continuous set of outcomes, the sum is understood to be replaced by an appropriate integral.)
+An \emph{operational theory} is a specification $(\mathcal{P}, \mathcal{M}, K, \allowbreak \{\text{Pr}(k|P,M)\})$, where $\mathcal{P}$ and $\mathcal{M}$ are the sets of all possible preparations and measurements respectively modulo the equivalences. %We sometimes also talk about \emph{transformations}: maps $T:P \to P$ or $T: M \to M$, but these can be absorbed into preparations or measurements without loss of generality.
+
+Quantum theory is an operational theory. Let $\mathbb{H}(\mathbb{C}^d)$ be the real vector space of Hermitian operators over a $d$-dimensional complex vector space $\mathbb{C}^d$. $\rho \in \mathbb{H}(\mathbb{C}^d)$ is a \emph{positive operator} if all of its eigenvalues are non-negative. In the Hilbert space formulation of quantum theory, a preparation $P \in \mathcal{P}$ or a \emph{state} is represented by a positive operator $\rho$ with trace 1 called a \emph{density operator}. A measurement $M \in \mathcal{M}$ is represented by a set of positive operators $\{E_k\}$ enumerated by $k$ and summing to the identity,
+\begin{align}
+\sum_{k \in K} E_k &= \id,
+\end{align}
+called a \emph{POVM} (positive-operator valued measure).
+The probabilities are given by the \emph{Born rule}:
+\begin{align}
+\text{Pr} (k|\rho,E) &= \Tr (E_k \rho).
+\end{align}
+
+Any mathematical formalism that gives the same operational quadruplet $(\mathcal{P}, \mathcal{M},\\K,\{\text{Pr}(k|P,M)\})$ is operationally identical to quantum theory, although it can contain additional elements that give rise to operationally equivalent elements of the quadruplet. In the Hilbert space formulation, statistical mixtures of preparations are represented by real linear combinations of the density operators. Every density operator is a statistical mixture of rank-1 density operators $\ketbra{\psi}{\psi}$ called \emph{pure states}. The pure states themselves form the complex projective space $\mathbb{C}P^{d-1} \coloneqq (\mathbb{C}^d - \{0\} )/\mathbb{C}$, where $\mathbb{C}^d$ is usually what is referred to as \emph{the} Hilbert space $\hilb$. However, vectors in $\mathbb{C}^d$ that differ by a scalar multiple are operationally indistinguishable. Thus, they are not parts of the operational quantum theory.
+
+An \emph{ontological model} is an operational theory in which a preparation represents an incomplete knowledge of underlying \emph{ontic states} $\lambda$, the ``real" state of affairs (traditionally called \emph{hidden variables}) that are present independent of the limited subjective experience of outcomes. The set $\Lambda = \{\lambda\}$ represents some classical ontology such as a phase space. Formally, an ontological model is an operational theory together with a set $\Lambda$ of ontic states and the probabilities $\{\text{Pr}(\lambda|P)\}$ and $\{\text{Pr}(k|M,\lambda)\}$ such that any observable outcome depends on $P$ only through $\lambda$:
+\begin{align}
+\text{Pr}(k|P,M,\lambda) &= \text{Pr}(k|M,\lambda).
+\end{align}
+This implies that the joint probability can be obtained using the law of total probability as
+\begin{align}\label{total-probability}
+	\text{Pr}(k|P,M) &= \sum_{\lambda \in \Lambda} \text{Pr}(k|M,\lambda) \text{Pr}(\lambda|P).
+\end{align}
+
+A \emph{quasi-probability representation} of quantum theory is a pair $(\mu,\xi)$ of invertible convex-linear mappings to the space of real functions $\mathbb{R}[\Lambda]$ on $\Lambda$ \cite{ferrie_framed_2009}:
+\begin{align}\label{def-quasi-rep}
+	\mu:\herm &\to \mathbb{R}[\Lambda], & \xi:\herm &\to \mathbb{R}[\Lambda], \\
+	\rho &\mapsto \mu_{\rho} (\lambda), & E_k &\mapsto \xi_{E_k} (\lambda), \nonumber \\
+	\sum_{\lambda \in \Lambda} \mu_{\rho}(\lambda) &= 1, &
+	\sum_{k\in K} \xi_{E_k} (\lambda) = \xi_{\id} (\lambda) &= 1 \nonumber,
+\end{align}
+such that the Born rule is expressed as an average over distributions.
+\begin{align}\label{Born-rule}
+	\Tr (\rho E_k) &= \sum_{\lambda \in \Lambda} \mu_{\rho } (\lambda) \xi_{E_k} (\lambda).
+\end{align}
+$\mu_{\rho}(\lambda)$ and $\xi_{E_k}(\lambda)$ are \emph{quasi-probability functions} for the state $\rho$ and the POVM element $E_k$. Eq. (\ref{Born-rule}) is an analogue of eq. (\ref{total-probability}) except that now $\mu$ and $\xi$ are allowed to take on negative values. This definition encompasses all known quasi-probability representations \cite{ferrie_quasi-probability_2011}. %{\csj They are also called \emph{symbols} in the context of phase space.}
+
+%------------------------------------
+\section{Frame formalism}
+%------------------------------------
+
+To discuss the connection with quantum operators and thus examples of quasi-probability representations, it is convenient to employ the mathematical theory of frames.
+
+A \emph{frame} can be thought of as a generalization of an orthogonal basis \cite{christensen2003introduction}. Frames can be defined for any inner product space, but we will define them for $\herm$, a real vector space of Hermitian operators on $\hilb$ with the trace inner product $\Tr (AB)$. A frame $F$ for $\herm$ is a set of (Hermitian) operators $\{ F(\lambda)\}\subset \herm$, $d^2 \le |\Lambda|$, which satisfy the frame bound:
+\begin{equation}\label{frame-bound}
+a\norm{A}^2\leq\sum_{\lambda\in\Lambda} \Tr[ F(\lambda){A}]^2\leq b\norm{A}^2,
+\end{equation}
+for some constants $0<a,b< \infty$ for all $A \in \herm$. (Again, when $|\Lambda| = \infty$, the sum is understood to be replaced by an appropriate integral.) Note that a finite set spans $\herm$ if and only if it is a finite frame ($|\Lambda| < \infty$). In particular, a finite spanning set satisfies the frame bound because there is no operator $A$ for which the sum vanishes (such an operator would lie outside the span).  This definition generalizes a defining condition for an orthonormal basis $\{ B_k\}_{k=1}^{d^2}$
+\begin{equation}
+\sum_{k=1}^{d^2}\Tr[{B_k}{A}]^2 = \norm{A}^2,
+\end{equation}
+for all $A \in \herm$. The mapping $A\mapsto\Tr[ {F(\lambda)}{A}]$ is called a \emph{frame representation} of $\herm$.
+
+In the language of \emph{superoperators} \cite{caves2014superoperators} (linear operators acting on $\herm$), an operator $A \in \herm$ is thought of as a vector $\rket{A}$ waiting for the linear functional $(B|A) = \Tr(BA)$. The \emph{frame superoperator}
+\begin{align}
+\mathcal{F} &\coloneqq \sum_{\lambda \in \Lambda} \rketbra{F(\lambda)}{F(\lambda)}
+\end{align}
+is positive definite thus invertible and has a unique positive square root.
+The frame bound \eqref{frame-bound} can be rewritten as
+\begin{align}
+	a{\bf I} \le \mathcal{F} \le b{\bf I},
+\end{align}
+where ${\bf I}$ is the \emph{left-right identity superoperator}, ${\bf I} = \sum_{j,k} \ketbra{j}{k} \otimes \ketbra{k}{j}$ for $\{\ket{j}\}$ an orthonormal basis for $\mathbb{C}^d$ (not to be confused with the identity superoperator $\mathcal{I} = \id \otimes \id$ under the standard action in the Kraus form:
+\begin{align}
+	\mathcal{I}(A) &= \sum_{j,k} \ketbra{j}{j} A \ketbra{k}{k} = A.)
+\end{align}
+A frame $\{D(\lambda)\}$ that allows the reconstruction
+\begin{align}
+A = \sum_{\lambda \in \Lambda} \Tr [F(\lambda) A] D(\lambda)
+\end{align}
+for all $A \in \herm$ is a \emph{dual frame} to $\{F(\lambda)\}$. A dual frame is not unique when the frame is overcomplete ($|\Lambda| > d^2$), but there always exists the \emph{canonical dual frame}
+\begin{align}
+\rket{\widetilde{F (\lambda)}} &\coloneqq \mathcal{F}^{-1} \rket{F(\lambda)}.
+\end{align}
+because
+\begin{align}
+A&= \mathcal{F}^{-1} \mathcal{F} (A) = \sum_{\lambda \in \Lambda} \Tr [F(\lambda) A] \mathcal{F}^{-1} F(\lambda) = \sum_{\lambda \in \Lambda} \Tr [F(\lambda) A] \widetilde{F (\lambda)}.
+\end{align}
+If the frame operator is proportional to the identity superoperator, $\mathcal{F} = a{\bf I}$, the frame is called \emph{tight}. In other words, a tight frame satisfies the completeness relation
+\begin{align}
+	\frac{1}{a} \sum_{\lambda \in \Lambda} \rketbra{F(\lambda)}{F(\lambda)} &= {\bf I}.
+\end{align}
+Every tight frame is self-dual. Given any frame, there is a \emph{canonical tight frame} which can be constructed from the frame operator
+\begin{align}
+	\rket{\overline{F(\lambda)}} &\coloneqq  \mathcal{F}^{-1/2} \rket{F(\lambda)}.
+\end{align}
+It is tight because
+\begin{align}
+	\sum_{\lambda \in \Lambda} \rketbra{\overline{F(\lambda)}}{\overline{F(\lambda)}}
+		&= \mathcal{F}^{-1/2} \mathcal{F} \mathcal{F}^{-1/2}
+		= {\bf I}.
+\end{align}
+When $|\Lambda| = d^2$, a frame is tight if and only it is an orthogonal basis. So this construction is an alternative to the Gram-Schmidt process to construct an orthogonal basis from any given basis.
+
+It was shown in \cite{ferrie_frame_2008,ferrie_framed_2009,ferrie_necessity_2010} that each quasi-probability representation is associated with a pair of dual frames.  That is, given any quasi-probability function $(\mu,\xi)$ on $\Lambda$, it must be the case that it can be obtained via the mapping
+\begin{align}\label{def-quasi-rep2}
+\rho &\mapsto \mu(\lambda) = \Tr[\rho F(\lambda)], & E_k &\mapsto \xi(\lambda) = \Tr [E_k D(\lambda)].
+\end{align}
+The converse is also true: given any frame and its dual, they can be normalized
+\begin{align}\label{def-quasi-rep-frame}
+\sum_{\lambda \in \Lambda} F(\lambda) &= \id, & \Tr[D(\lambda)] &= 1,
+\end{align}
+for all $\lambda \in \Lambda$, so that \ref{def-quasi-rep2} defines a quasi-probability function on $\Lambda$. Thus, we can study properties of the frame elements by studying those of the mapping itself.
+
+%------------------------------------
+\subsection{Inevitability of negativity}
+%------------------------------------
+
+If a quasi-probability representation features only positive functions, then the frame elements must be positive operators.  If some $F(\lambda)$ is not a positive operator, $\mu(\lambda)$ must obtain negative values for some quantum state. As it turns out, negativity must arise in a quasi-probability representation when the full quantum formalism is taken into account. That is, the quasi-probability function of some state or measurement must exhibit negativity. This folklore was first proven in \cite{spekkens_negativity_2008} as the impossibility of a non-contextual ontological model of quantum theory. Direct proofs using the theory of
+frames were given in  \cite{ferrie_frame_2008,ferrie_framed_2009} and
+generalized to infinite dimensional Hilbert spaces in \cite
+{ferrie_necessity_2010}. The result, in finite dimensions, is also implied by earlier work on a related topic in \cite{busch_classical_1993}.
+
+\cite{ferrie_frame_2008} establishes the inevitability of negativity using rudimentary entanglement theory. Suppose that the superoperator $\Phi(A) = \sum_{\lambda \in \Lambda} \Tr [F(\lambda)A] D(\lambda)$ is the identity superoperator (thus $F$ and $D$ are dual frames). We will show that this cannot happen if both $F$ and $D$ consist only of positive operators. If $\rket{\tau_{\alpha}} = \ketbra{j}{k}$, where $\{\ket{j}\}$ is  the standard basis for $\mathbb{C}^d$, the \emph{Choi isomorphism} for a superoperator is the (basis-dependent) mapping
+\begin{align}
+	\rketbra{\tau_{\alpha}}{\tau_{\beta}} &\mapsto \rket{\tau_{\alpha}} \otimes \rket{\tau_{\beta}}
+\end{align}
+from a superoperator $\mathcal{S}$ to its \emph{Choi matrix} $\sum_{\alpha} \mathcal{S} \rket{\tau_{\alpha}} \otimes \rket{\tau_{\alpha}}$. The Choi matrix of $\Phi$ is
+\begin{align*}
+\sum_{j,k} \Phi (\ketbra{j}{k}) \otimes \ketbra{j}{k}
+	&= \sum_{j,k} \left( \sum_{\lambda \in \Lambda} \braket{k|F(\lambda)|j} D(\lambda) \right) \otimes \ketbra{j}{k} \\	
+	 &= \sum_{\lambda \in \Lambda}  D(\lambda) \otimes \left( \sum_{j,k}  \braket{k|F(\lambda)|j} \ketbra{j}{k} \right) \\
+	 &= \sum_{\lambda \in \Lambda} D(\lambda) \otimes F^T(\lambda),
+\end{align*}
+which is a separable operator (a convex combination of the tensor product of positive operators) when both $F$ and $D$ consist only of positive operators. However, the Choi matrix $\sum_{j,k} \ketbra{j}{k} \otimes \ketbra{j}{k}$ of the identity superoperator is not separable hence the contradiction.
+
+\newcommand\rep{U}
+
+%------------------------------------
+\section{Group covariance}
+%------------------------------------
+
+Given the arbitrariness of frame representations, there are infinitely many choices of quasi-probability representations and one would not expect all of them to be equally useful. A powerful guiding principle in the search for useful mathematical models is to impose symmetry. Given a group $G$, a quasi-probability representation is said to be \emph{$G$-covariant} if a unitary representation $\rep:G \to \herm$ induces a group action on the ontic space $\Lambda$ such that for all $g \in G$ and $A \in \herm$,
+\begin{align}\label{def:covariant}
+G \times \Lambda &\to \Lambda, \\
+\mu_{\rep\dgg(g) A \rep(g)} (\lambda) &= \mu_A (g \cdot \lambda),
+\end{align}
+or equivalently,
+\begin{align}
+\rep(g) F(\lambda) \rep\dgg(g) &= F(g\cdot \lambda).
+\end{align}
+In words, the unitary group action on quantum operators simply permutes points in the ontic space. In particular, operators that lie in the same orbit of the group exhibit the same amount of negativity in their quasi-probability distributions. $G$-covariance is thus a quite natural constraint if one wants to interpret negativity as non-classicality and has a reason that $G$ should be thought of as a classical dynamics.
+
+%Group covariance is a rather strong requirement. The Wigner representation is singled out by the self-duality and the \emph{marginal property}: the probability to obtain the outcome $c$ from a measurement of the observable $aQ + bP$ is obtained by integrating $\mu_{\rho}$ along the line $aq+bp = c$ \cite{bertrand_tomographic_1987}. This is not the case for discrete Wigner function as all discrete quasi-probability representations constructed in \cite{gibbons_discrete_2004} do satisfy the marginal property. Instead, the Clifford-covariance essentially singles out Gross' discrete Wigner function from among these (Appendix B of \cite{gross_hudsons_2006}). \cite{zhu_multiqubit_2015} and \cite{zhu_permutation_2016} give a further characterization of Gross' discrete Wigner function based on symmetry and show that no operator basis can be covariant under the multi-qubit Clifford group because it is a unitary 3-design, giving another reason why there is no analogue of the Wigner function in power-of-2 dimensions.
+
+%------------------------------------
+\section{Stratonovich-Weyl correspondence}\label{ch3:SW}
+%------------------------------------
+
+How can one construct a $G$-covariant quasi-probability representation? Brif and Mann \cite{brif_phase-space_1999} outlined a general approach based on harmonic analysis on homogeneous spaces to construct a family of $G$-covariant frames $\{F^{(s)}(\lambda) \}$ satisfying what they referred to as the \emph{Stratonovich-Weyl (SW) correspondence} motivated by the Wigner function \cite{stratonovich_distributions_1957}:
+\begin{enumerate}
+	\item The mapping
+		\begin{align}
+		\rho &\mapsto \mu_{\rho}^{(s)}(\lambda) = \Tr[\rho F^{(s)}(\lambda)], & E_k &\mapsto \xi_{E_k}^{(-s)}(\lambda) = \Tr [E_k F^{(-s)}(\lambda)].
+		\end{align}
+	defines a quasi-probability representation \eqref{def-quasi-rep}. That is, $F^{(-s)}$ is a dual frame to $F^{(s)}$.
+	\item The quasi-probability representation is $G$-covariant \eqref{def:covariant} for every $s$.
+\end{enumerate}
+Quasi-probability representations that satisfy the correspondence will be called \emph{SW quasi-probability representations} and their associated frames \emph{SW frames}.
+As examples, the paper \cite{brif_phase-space_1999} reconstructed the $s$-parametrized quasi-probability representations covariant under the Weyl-Heisenberg group (including the Wigner function in \autoref{ch4:wigner}) and the $\gr{SU}{2}$-covariant spherical quasi-probability representations for spins, originally constructed by Stratonovich. Other examples based on the Euclidean group and the Poincar{\'e} group were mentioned in \cite{brif_phase-space_1999}, but recent years have also seen a renewed interest in $\gr{SU}{n}$-covariant quasi-probability representations for the purpose of visualization, state estimation, and entanglement detection \cite{klimov_general_2010,tilma_sun-symmetric_2012,rios_symbol_2014,tilma_wigner_2016,rundle_simple_2017}.
+
+% The approach, although very general, does not lend itself easily to applications to arbitrary Hilbert spaces and homogeneous spaces associated to $G$. Simplifications adapted to the fundamental representation of $\gr{SU}{n}$ are found in \cite{klimov_general_2010} and \cite{tilma_sun-symmetric_2012}
+
+%Given a Lie group $G$ acting on the Hilbert space of interest through an irreducible representation $\lambda$, pick a fiducial state. The image of this state under $\lambda$ are called \emph{$G$ coherent states}. Suppose that there is a closed subgroup $K \subset G$ which leaves the reference state invariant up to a phase. Then the collection of $G$ coherent states is isomorphic to the homogeneous space $G/K$.
+
+%In our case, the homogeneous space $SO(2n)/\rep(n)$ has a special symmetry that makes it a \emph{symmetric space}, the fact we utilize to greatly simplify the construction. Symmetric phase spaces (without quasi-probabilities) are also discussed in the review article \cite{Zhang90}.
+
+%------------------------------------
+\subsection{Construction and uniqueness of SW frames}\label{ch3:construction}
+%------------------------------------
+
+There are a few necessary ingredients in the construction of SW quasi-probability representations: 
+\begin{itemize}
+	\item A Lie group $G$
+	\item An irreducible unitary representation $(\rep,\hilb)$ where $\lambda$ is the highest weight
+	\item A fiducial state $\ket{e} \in \hilb$
+\end{itemize}
+(The irreducibility is assumed without loss of generality. If the representation is reducible, we would obtain a frame for each irrep.) The orbit of $\ket{e}$ under $G$ will be the phase space, having the structure of the homogeneous space $G/K$, where $K = \{ g \in G | \rep_{\lambda}(g)\ketbra{e}{e}\rep\dgg_{\lambda}(g) = \ketbra{e}{e} \}$ is the stabilizer of $\ketbra{e}{e}$. (As a vector in $\hilb$, $\ket{e}$ is fixed by $G$ up to a phase.) We write
+\begin{align}
+	\ket{\Omega} &= \rep(\Omega)\ket{e},
+\end{align}
+where $\Omega = gK \in G/K$.
+
+$\ket{\Omega}$ is called a \emph{$G$-coherent state}  \cite{perelomov_generalized_1986,combescure2012coherent,ali2014coherent}. This notion generalizes the usual bosonic coherent states which form an orbit of the vacuum state under the Weyl-Heisenberg group. $G$-coherent states are not necessarily minimum-uncertainty states or eigenstates of some annihilation operators, however. The mathematical structure of $G$-coherent states was developed independently by Perelomov \cite{perelomov_coherent_1972} and Gilmore \cite{gilmore_geometry_1972,gilmore1974properties} and reviewed in \cite{zhang_coherent_1990}. Perelomov's and Gilmore's coherent states differ in their generalities. On the one hand, Perelomov's groups are limited to Lie groups, while the unitary representations and the fiducial states can be arbitrary. On the other hand, Gilmore's groups are allowed to be arbitrary but the fiducial state must be the highest weight of the representations. We are primarily interested in finite-dimensional Hilbert spaces and compact Lie groups. The fiducial state for the fermionic quasi-probability representation in Chapter \ref{ch:matchgate} will naturally be the vacuum state of the Fock space which is the highest weight state of the (even) spinor representation. In general, the fiducial state need not be the highest weight state. However, there may be compelling reasons to choose it that way. For example, if the highest weight state is chosen to be the fiducial state, the phase space will have a natural symplectic structure \cite{onofri_note_1975}.
+
+Since we work with a compact group $G$, an arbitrary square-integrable function on $G$ can always be approximated by a linear combination of the matrix elements $\rep_{\lambda}(g)_{jk}$ (The Peter-Weyl theorem: Theorem \ref{thm:peter-weyl}, Chapter 2). Brif and Mann showed that the coherent states $\{ \ket{\Omega} \}$ and ``harmonic functions" $Y_{\nu}(\Omega)$ are sufficient to determine the SW frames. Their approach, although very general, does not lend itself easily to applications to arbitrary homogeneous spaces and representations of $G$.\footnote{Simplifications adapted to the defining representation of $\gr{SU}{n}$ can be found in \cite{klimov_general_2010} and \cite{tilma_sun-symmetric_2012}}
+%The difficulty is that the harmonic functions are typically found by solving the Laplace-Beltrami equation -- a second-order differential equation on the homogeneous space -- a non-trivial task, and we do not need all of them when the phase space is compact.
+{\bf We approach Brif and Mann's construction more algebraically and simplify it in the special case when the phase space $G/K$ is compact and the relevant irreps are multiplicity-free.}
+%\begin{enumerate}
+%	\item\label{SW:linearity} The quasi-probability mapping is linear and invertible.
+%	\item\label{SW:reality} $F^{(s)} (\Omega)$ is Hermitian.
+%	\item\label{SW:normalization} Normalization of probabilities:
+%	\begin{align}
+%		\int_{G/K} F_A(\Omega) &= \Tr A.	
+%	\end{align}
+%	\item\label{SW:covariance} $F(\Omega's)$ is covariant under the $G$-action.
+%	\item\label{SW:duality} $F(s)$ and $F(-s)$ are dual frames.
+%\end{enumerate}
+
+Let $d$ be the dimension of the irrep $(\rep,\hilb)$. With respect to a normalized integration measure on $G/K$, the projection operators $\ketbra{\Omega}{\Omega}$ integrate to $\id/d$ as a consequence of Schur's lemma, where the factor $1/d$ is obtained by taking the trace of both sides. It is much more convenient to absorb it into the measure using, as Brif and Mann did,
+\begin{align}
+	\int d\Omega \ket{\Omega}\bra{\Omega} &= \id,
+\end{align}
+so that
+\begin{align}
+	\int d\Omega &= d.
+\end{align}
+This modifies the orthogonality and completeness relations of the matrix elements (\autoref{ch2:spherical}) as follows:
+\begin{align}
+\int d\Omega\, \rep_{\lambda}(\Omega)_{\mu 0} \left( \rep_{\lambda'}(\Omega)_{\mu' 0} \right)^* &= \frac{d}{d_{\lambda}} \delta_{\lambda\lambda'} \delta_{\mu\mu'}, \label{thm:orthogonality-unnormalized} \\
+\sum_{\lambda,\mu} d_{\lambda} \rep_{\lambda}(\Omega)_{\mu 0} \left( \rep_{\lambda}(\Omega')_{\mu 0} \right)^* &= d\mathcal{K}(\Omega - \Omega'), \label{thm:completeness-unnormalized}
+\end{align}
+where $\mathcal{K}(\Omega - \Omega')$ acts like the delta distribution with respect to the unnormalized measure:\footnote{When the summation is not over the entire range of irreps $\lambda \in \hat{G}$, $\mathcal{K}(\Omega - \Omega')$ is never actually a delta distribution on $G/K$.}
+\begin{align}
+	\int d\Omega\, \mathcal{K}(\Omega - \Omega') f(\Omega') &= f(\Omega).
+\end{align}
+(To compare with \cite{brif_phase-space_1999}, their $Y_{\nu}(\Omega)$ is
+\begin{align}
+	Y_{\nu}(\Omega) \eqqcolon Y_{\lambda \mu} (\Omega) &= \sqrt{\frac{d_{\lambda}}{d}} \rep_{\lambda}(\Omega)_{\mu 0}.)
+\end{align}
+
+%{\cmc The starting point here is pretty confusing.  Are you saying that you start with dual frames, which you just label by $s'$ and $-s'$, and then you generate the frames with other values of $s$ by the integral below?  But that construction seems to rely on knowing what the other frames are or at least knowing the kernel~(3.34), and where did that come from?  Looking forward a bit, it seems that the only thing you have to start with is the coherent-state frame.  You then need its dual (is this a problem?) after which you are off and running with a kernel that has to be of the form (3.37).}  
+With the above preparation, we are now ready to derive the frames satisfying the Stratonovich-Weyl correspondence. Certainly, for any $s$ and $s'$, a frame element $F^{(s)} (\Omega)$ can be expanded using another frame $F^{(s')} (\Omega)$ and the dual $F^{(-s')}(\Omega)$:
+\begin{align}\label{eq:SW-reconstruction}
+	F^{(s)} (\Omega) &= \int d\Omega'\,\Tr [F^{(s)} (\Omega) F^{(-s')} (\Omega')] F^{(s')} (\Omega').
+\end{align}
+It is convenient to give the integral kernel a symbol
+\begin{align}
+	\rker{ss'}(\Omega,\Omega') \coloneqq \Tr [F^{(s)} (\Omega) F^{(-s')} (\Omega')],
+\end{align}
+so that we can write
+\begin{align}
+	F^{(s)} (\Omega) &= \int d\Omega'\,\rker{ss'}(\Omega,\Omega') F^{(s')} (\Omega').
+\end{align} 
+The duality between frames means that $\rker{ss}(\Omega,\Omega')$ is exactly a reproducing kernel:
+\begin{align}\label{eq:SW-duality}
+	\rker{ss}(\Omega,\Omega') &= \Tr [F^{(s)} (\Omega)F^{(-s)}(\Omega')] =  \mathcal{K}(\Omega - \Omega').
+\end{align}
+A natural $G/K$-covariant frame that we have at hand is the coherent-state frame. So we fix the frame at $s=-1$ to be
+\begin{align}
+F^{(-1)}(\Omega) &\coloneqq \ketbra{\Omega}{\Omega},
+\end{align}
+so that $\mu^{(-1)}(\Omega)$ is an analogue of the Q function. (Had we used the normalized measure, the frame would have to be $d \ketbra{\Omega}{\Omega}$.)
+
+$G$-covariance places a strong restriction on the form of the kernel:
+\begin{align*}
+	\rker{ss'}(\Omega,\Omega') &= \Tr[\rep(\Omega) F^{(s)}(0) \rep\dgg(\Omega) \rep(\Omega') F^{(-s')}(0) \rep\dgg(\Omega')] \\
+	&= \Tr[ F^{(s)}(0) \rep(\Omega^{-1}\Omega') F^{(-s')}(0) \rep\dgg(\Omega^{-1}\Omega')] \\
+	&\eqqcolon \rker{ss'}(\Omega^{-1}\Omega').
+\end{align*}
+Since the left and right multiplication by elements in $K$ do not alter the frames, $\rker{ss'}$ as a function on $G$ is a $K$-bi-invariant function. On a multiplicity-free space, this means that $\rker{ss'}$ is a linear combination of spherical functions $\rep_{\mu}(\Omega^{-1}\Omega')_{00}$ (\autoref{ch2:gelfand}).
+In particular, let us write for the coherent-state frame
+\begin{align}\label{coherent-state-kernel}
+	\rker{s,1}(\Omega^{-1}\Omega') 
+	= \braket{\Omega'| F^{(s)} (\Omega) |\Omega'}  
+	\coloneqq \sum_{\mu} f_{\mu}(s) \rep_{\mu}(\Omega^{-1}\Omega')_{00},
+\end{align}
+where $f_{\mu}(s)$ is a function to be determined. This puts the reconstruction formula \eqref{eq:SW-reconstruction} in the form
+\begin{align}\label{thm:pre-frame-formula}
+F^{(s)} (\Omega) &= \sum_{\mu} f_{\mu}(s) \int d\Omega'\,\rep_{\mu}(\Omega^{-1}\Omega')_{00} \ketbra{\Omega'}{\Omega'}.
+\end{align}
+
+We show that $f_{\mu}(s)$ is a function of the Clebsch-Gordan coefficients for the $K$-invariant subspace of $\hilb^* \otimes \hilb$ and the dimension of the irreps involved.
+Consider
+\begin{align}\label{coherent-state-inner-product}
+\rker{-1,1}(\Omega,\Omega') =\left| \braket{\Omega | \Omega'} \right|^2
+	&= \braket{e| \rep\dgg (\Omega^{-1} \Omega') |e}
+	\braket{e| \rep (\Omega^{-1} \Omega') |e} \nonumber \\
+	&=  \braket{ee| \rep_{\lambda} (\Omega^{-1} \Omega') \otimes \rep(\Omega^{-1} \Omega') |ee},
+\end{align}
+where $\ket{ee} = \ket{e} \otimes \ket{e}$, and recognize that this is a matrix element in the representation $\hilb^* \otimes \hilb$. The tensor product representation is not irreducible and decomposes into irreps
+\begin{align}
+\hilb^* \otimes \hilb &\stackrel{G}{\simeq} \bigoplus_{\mu \in \hat{G}} \bigoplus^{n_{\mu}} V_{\mu}.
+\end{align}
+Let us call the $K$-invariant vector in each $V_{\mu}$ the \emph{$K$-singlet} $\ket{\mu 0}$. Only the singlets contribute to the sum, weighted by Clebsch-Gordan coefficients from $\ket{ee}$ to each trivial irrep of $K$:
+\begin{align}
+\left| \braket{\Omega | \Omega'} \right|^2
+&=  \braket{
+	ee| \bigoplus_{\mu \in \hat{G}} \bigoplus^{n_{\mu}} \rep_{\mu} (\Omega^{-1} \Omega')_{00} \ketbra{\mu 0}{\mu 0} ee} \nonumber \\
+&= \sum_{\mu \in \hat{G}} \left( \sum_{j=1}^{n_{\mu}}
+\left| \braket{\mu j 0|ee} \right|^2 \right)
+\rep_{\mu} (\Omega^{-1} \Omega')_{00}. \label{thm:singlet-decomposition}
+\end{align}
+The number of distinct irreps $\mu$ that appear in the decomposition is the number of spherical functions that we need, which can be much less than the number of $Y_{\lambda \mu}$ which grows as $(\dim\hilb)^2$. Note that since 
+\begin{align}
+	\Gamma_{\mu}^2 &\coloneqq \sum_{j=1}^{n_{\mu}} \left| \braket{\mu j 0|ee} \right|^2
+\end{align}
+is real, the spherical function $\rep_{\mu} (\Omega^{-1} \Omega')_{00}$ and the function $f_{\mu}(s)$ must also be real. Now, the duality equation \eqref{eq:SW-duality}
+\begin{align}
+	\rker{ss}(\Omega,\Omega') &= \Tr [F^{(s)} (\Omega)F^{(-s)}(\Omega')] =  \mathcal{K}(\Omega - \Omega')
+\end{align}
+can be expanded using eq. \eqref{thm:pre-frame-formula} and eq. \eqref{thm:singlet-decomposition}:
+\begin{align*}
+	&\Tr [F\dgg(\Omega,s)F(\Upsilon,-s)] \\
+	&= \sum_{\zeta,\eta} f^*_{\zeta}(s) f_{\eta}(-s) \int d\Omega' \int d\Upsilon'
+	\left( \rep_{\zeta}(\Omega^{-1}\Omega')_{00} \right)^* \rep_{\eta}(\Upsilon^{-1}\Upsilon')_{00} \left| \braket{\Omega'|\Upsilon'} \right|^2 \\
+	&= \sum_{\zeta,\eta} f^*_{\zeta}(s) f_{\eta}(-s) \int d\Omega' \int d\Upsilon'
+	\left( \sum_{\mu} \rep_{\zeta}(\Omega)_{\mu 0}  \left( \rep_{\zeta}(\Omega')_{\mu 0} \right)^* \right) \\
+	&\times \left( \sum_{\nu} \left( \rep_{\eta}(\Upsilon)_{\nu 0} \right)^*  \rep_{\eta}(\Upsilon')_{\nu 0} \right)
+	\sum_{\sigma} \Gamma_{\sigma}^2
+	\left( \sum_{\tau} \left( \rep_{\sigma}(\Upsilon')_{\tau 0} \right)^* \rep_{\sigma}(\Omega')_{\tau 0} \right),
+\end{align*}
+By the orthogonality of the matrix elements \eqref{thm:orthogonality-unnormalized}
+\begin{align}
+	\int d\Omega'\,\rep_{\sigma}(\Omega')_{\tau 0} \left( \rep_{\zeta}(\Omega')_{\mu 0} \right)^* &= \frac{d}{d_{\sigma}} \delta_{\zeta \sigma} \delta_{\mu \tau}, \\
+	\int d\Upsilon'\,\rep_{\eta}(\Upsilon')_{\nu 0} \left( \rep_{\sigma} (\Upsilon')_{\tau 0} \right)^* &= \frac{d}{d_{\sigma}} \delta_{\eta \sigma} \delta_{\nu \tau},
+\end{align}
+we have
+\begin{align}
+	\Tr [F^{(s)} (\Omega)F(\Upsilon,-s)] &= \sum_{\sigma} f_{\sigma}(s) f_{\sigma}(-s) \left( \frac{d\Gamma_{\sigma}}{d_{\sigma}} \right)^2
+		\rep_{\sigma} (\Upsilon^{-1} \Omega)_{00}.
+\end{align}
+For this to be the expansion of $\mathcal{K}(\Omega - \Omega')$, we see from \eqref{thm:completeness-unnormalized} that
+\begin{align}\label{suggestive-exp}
+	f_{\sigma}(s) f_{\sigma}(-s) &= \frac{1}{\Gamma_{\sigma}^2} \left( \frac{d_{\sigma}}{d} \right)^3
+\end{align}
+for all $s$.
+
+Brif and Mann conclude that $ \Gamma_{\sigma} (d/d_{\sigma})^{3/2} f_{\sigma}(s)$ must be a simple exponential function in $s$. However, any $g(s)$ that is an exponential of an odd function of $s$, such as $s^3$, would satisfy $g(s)g(-s) = 1$ as well. Nevertheless, we can show the uniqueness of the self-dual SW frame under a mild differentiability assumption. Eq. \eqref{suggestive-exp} implies that $f_{\sigma}(0)$ is ambiguous up to a sign:
+\begin{align}
+	f_{\sigma}(0) &= \pm \frac{1}{\Gamma_{\sigma}} \left( \frac{d_{\sigma}}{d} \right)^{3/2}.
+\end{align}
+To pick the plus sign, note that
+\begin{align}
+	\rker{-1,-1}(\Omega,\Omega') &= \sum_{\sigma} f_{\sigma}(-1) \rep_{\sigma}(\Omega^{-1}\Omega')_{00} = \mathcal{K}(\Omega - \Omega')
+\end{align}
+fixes the value $f_{\sigma}(-1) = d_{\sigma}/d$ for all $\sigma$. For $f_{\sigma}(0)$ to be negative, $f_{\sigma}(s)$ must cross the value zero somewhere between $s=0$ and $s=-1$ by the mean value theorem if $F(s)$ is a $C^1$ function in $s$. However, this cannot happen as the right hand side of eq. \eqref{suggestive-exp} is never zero. As a result,
+\begin{align}
+	f_{\sigma}(s) &= \frac{1}{\Gamma_{\sigma}} \left( \frac{d_{\sigma}}{d} \right)^{3/2}.
+\end{align}
+The only freedom left for other values of $s$ is essentially just a choice of scaling. Since we will only be interested in the case $s=0$, we can assume the simple exponential dependence as did Brif and Mann and arrive at
+\begin{align}
+f_{\sigma}(0) &= \frac{1}{\Gamma_{\sigma}^{1+s}} \left( \frac{d_{\sigma}}{d} \right)^{(3+s)/2}.
+\end{align}
+Putting everything together, we have
+\begin{align}\label{brif-mann-frame}
+F^{(s)}(\Omega) &= \sum_{\mu} \frac{1}{\Gamma_{\mu}^{1+s}} \left( \frac{d_{\mu}}{d} \right)^{(3+s)/2}
+\int d\Omega'\,\rep_{\mu}(\Omega^{-1}\Omega')_{00} \ketbra{\Omega'}{\Omega'},
+\end{align}
+where
+\begin{align}\label{brif-mann-cg}
+	\Gamma_{\mu} = \sqrt{ \sum_{j=1}^{n_{\mu}} \left| \braket{\mu j 0|ee} \right|^2}
+\end{align}
+is a function of the Clebsch-Gordan coefficients and the sum is over inequivalent irreps in the Clebsch-Gordan series of $\hilb^* \otimes \hilb$. The normalization only depends on the trivial irrep in the Clebsch-Gordan series:
+\begin{align}
+\int d\Omega\,F^{(s)}(\Omega) &= \sum_{\mu} \frac{1}{\Gamma_{\mu}^{1+s}} \left( \frac{d_{\mu}}{d} \right)^{(3+s)/2}
+\iint d\Omega\,d\Omega' \rep_{\mu}(\Omega^{-1}\Omega')_{00} \ketbra{\Omega'}{\Omega'} \nonumber \\
+&= \sum_{\mu} \frac{1}{\Gamma_{\mu}^{1+s}} \left( \frac{d_{\mu}}{d} \right)^{(3+s)/2} \sum_{\nu}
+\int d\Omega\,\rep_{\mu} (\Omega)_{\nu 0} \int d\Omega' \left( \rep_{\mu} (\Omega')_{\nu 0} \right)^* \ketbra{\Omega'}{\Omega'} \nonumber \\
+&= \frac{1}{(d\Gamma_{0}^2)^{(1+s)/2}} \int d\Omega' \ketbra{\Omega'}{\Omega'} = \id,
+\end{align}
+requiring
+\begin{align}
+\Gamma_{0} = \frac{1}{\sqrt{d}}.
+\end{align}
+As a corollary, we can now explicitly write down the kernel.
+\begin{align}
+\rker{ss'}(\Omega,\Omega') &= \sum_{\mu} \frac{d_{\mu}}{d} \left( \frac{ d_{\mu}}{d \Gamma^2_{\mu}} \right)^{(s-s')/2} \rep_{\mu}(\Omega^{-1}\Omega')_{00}.
+\end{align}
+($\tau_{\mu}$ in \cite{brif_phase-space_1999} is our $d\Gamma_{\mu}^2/d_{\mu}$.)
+
+To summarize what we have done so far, we have the following theorem.
+\begin{theorem}\label{thm:brif-mann-frame}
+	For $G$ a compact semisimple Lie group and $G/K$ multiplicity-free, the self-dual frame $\{F^{(0)}(\Omega)\}$ in the set of frames $\{F^{(s)}(\Omega)\}$ \eqref{brif-mann-frame} is uniquely determined given the following assumptions:
+	\begin{enumerate}
+		\item $\{F^{(s)}(\Omega)\}$ satisfies the Stratonovich-Weyl correspondence.
+		\item $\{F^{(s)}(\Omega)\}$ depends continuously and differentiably on the parameter $s$.
+	\end{enumerate}
+\end{theorem}
+
+%------------------------------------
+\subsection{$G$-coherent-state quasi-probability functions}\label{ch3:coherent-wigner-function}
+%------------------------------------
+
+The quasi-probability function of the fiducial state $\ket{e}$ can be obtained directly using the orthogonality of matrix elements without calculating the frames:
+\begin{align}
+	\braket{e|F^{(s)} (\Omega)|e}
+	&= \sum_{\mu} \frac{1}{\Gamma_{\mu}^{1+s}} \left( \frac{d_{\mu}}{d} \right)^{(3+s)/2}
+	\int d\Omega'\,\rep_{\mu}(\Omega^{-1}\Omega')_{00} \left| \braket{\Omega'|e} \right|^2 \nonumber \\
+	&= \sum_{\mu} \frac{1}{\Gamma_{\mu}^{1+s}} \left( \frac{d_{\mu}}{d} \right)^{(3+s)/2}
+	\!\!\! \int \!\! d\Omega' \!\left( \sum_{\nu} \rep_{\mu}(\Omega)_{\nu 0}  \left( \rep_{\mu}(\Omega')_{\nu 0} \right)^* \right)
+	\!\sum_{\sigma} \Gamma_{\sigma}^2 \rep_{\sigma} (\Omega')_{00} \nonumber \\
+	&= \sum_{\mu} \Gamma_{\mu}^{1-s} \left( \frac{d_{\mu}}{d} \right)^{(1+s)/2}
+	 \rep_{\mu}(\Omega)_{00}.\label{brif-mann-coherent}
+\end{align}
+This is particularly convenient if we only want to know the negativity of the $G$-coherent states, which remains unchanged under the $G$-action.  The quasi-probability function correctly limits to the Q function, which is nothing but the square of the inner product between two $G$-coherent states:
+\begin{align}
+	\mu_e^{(-1)} (\Omega) = \left| \braket{e| \Omega} \right|^2 &=
+	\sum_{\mu} \Gamma^2_{\mu} \rep_{\mu}(\Omega)_{00}
+\end{align}
+The quasi-probability function in the self-dual ($s=0$) representation is
+\begin{align}\label{brif-mann-wigner}
+\mu_e^{(0)} (\Omega) &= \sum_{\mu} \Gamma_{\mu} \sqrt{ \frac{d_{\mu}}{d}} \rep_{\mu}(\Omega)_{00}.
+\end{align}
+
+%%------------------------------------
+%\subsection{\nd Example: SU(2)-coherent states}
+%%------------------------------------
+%
+%This construction can be applied to all the spin $j$ representations of the simplest simple Lie group $\text{SU}(2)$ \cite{stratonovich_distributions_1957}. The manifold is a sphere with the normalized measure $d\Omega = \sin\theta d\theta /2$. The Wigner functions of pure Gaussian states are
+%\begin{align}
+%w_0 (0,\theta) &= \sum_l \left|\braket{jj;j(-j) | l0}\right| \sqrt{ \frac{2l+1}{2j+1}} D^{(l)}_{00} (\theta),
+%\end{align}
+%where $D^{(l)}_{00} (\theta)$ is the 00 element of the Wigner D-matrix. They appear to take on a negative value for every $j$ and become strictly non-negative only in the limit $j \to \infty$, but the integrated negativity shrinks pretty quickly, from -0.077 for $j=1/2$ to -0.005 for $j=5/2$.
+
+
+%\begin{table}\label{table:covariant-phase-spaces}
+%	\begin{center}
+%		\begin{tabular}{ |c|c| }
+%			\hline
+%			Quasi-probability representation & $G$  \\
+%			\hline
+%			Wigner function \cite{wigner_quantum_1932} & $\gr{Sp}{2n,\mathbb{R}} \ltimes \mathbb{R}^2$ \\
+%			%Discrete phase space based on finite fields \cite{gibbons_discrete_2004} & $\mathbb{Z}_d^{2n}$  \\
+%			\hline
+%			Gross' discrete Wigner function (for odd $d$) \cite{gross_hudsons_2006} & $\gr{Sp}{\mathbb{Z}_d^{2n}} \ltimes \mathbb{Z}_d^{2n}$ \\
+%			\hline
+%			Spherical \cite{stratonovich_distributions_1957} & $\gr{SO}{3}$ \\
+%			\hline
+%			$\gr{SU}{n}$ \cite{klimov_general_2010,tilma_sun-symmetric_2012} & $\gr{SU}{n}$ \\
+%			\hline
+%			Fermionic (this dissertation) & $\gr{SO}{2n}$ \\
+%			\hline
+%		\end{tabular}
+%	\end{center}
+%	\caption{Examples of self-dual $G$-covariant quasi-probability representations}
+%\end{table} 
