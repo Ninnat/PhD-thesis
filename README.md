@@ -1,6 +1,8 @@
 # README
 
-All rights reserved. Comments are welcome!
+PhD thesis, defended on February 5th 2018. All rights reserved.
+
+# Quantum Phase Space Representations and Their Negativities
 
 ## Abstract
 
