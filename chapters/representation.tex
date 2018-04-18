@@ -154,9 +154,9 @@ when $\text{Hom}_G (V,W)$ contains an invertible intertwiner. In this case, they
 
 Schur proved an elementary but very powerful observation that, in an algebraically closed field $K$ (such as $\mathbb{C}$), intertwiners between irreps behave like the Kronecker delta:
 \begin{align}
-\text{Hom}_G (V,W) \simeq
+\dim \text{Hom}_G (V,W) \simeq
 	\begin{cases}
-		K, & V \simeq W, \\
+		1, & V \simeq W, \\
 		0, & V \not\simeq W.
 	\end{cases}
 \end{align}
@@ -374,11 +374,19 @@ $G$-coherent states, to be introduced in the next chapter \autoref{ch3:construct
 \subsection{Regular representations and the group algebra}\label{ch2:regular}
 %------------------------------------
 
-Given a $G$-action on a set $X$, one can ``linearize" the action by considering the (left) \emph{permutation representation} on the set $Y^X$ of all functions $f$ from $X$ to another set $Y$:
+Given a $G$-action on a set $X$, one can ``linearize" the action by considering the (left) \emph{permutation representation} on the set $K^X$ of all functions $f$ on $X$ with values in a field $K$:
 \begin{align}
 	gf(x) &\coloneqq f(g^{-1}x).
 \end{align}
-(The inverse is required for the action to be a homomorphism.) Since functions can be added together and multiplied by elements of $Y$, $Y^X$ has a natural vector space structure, making the permutation representation an actual representation. The permutation representation of $G$ on a coset space $G/K$ is called a \emph{regular representation}. In particular, the permutation representation of $G$ on $G$ itself is usually called \emph{the} regular representation. 
+(The inverse is required for the action to be a homomorphism.) Since one can add together functions and multiply any function by scalars in $K$, $K^X$ has the structure of a vector space having as a basis the characteristic functions
+\begin{align}
+	\delta_y (x) &= 
+		\begin{cases}
+			1, & x = y, \\
+			0, & x \neq y.
+		\end{cases}
+\end{align}
+Thus, the permutation representation is indeed a representation. The permutation representation of $G$ on a coset space $G/K$ is called a \emph{regular representation}. In particular, the permutation representation of $G$ on $G$ itself is usually called \emph{the} regular representation. 
 
 %Traditional Fourier analysis on the real line $\mathbb{R}$ is the irrep decomposition of the regular representation of an abelian group.
 %\begin{align}

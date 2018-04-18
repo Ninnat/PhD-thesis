@@ -9,7 +9,7 @@
         \ifnum  \c@secnumdepth > \m@ne  \@chapapp\ \thechapter:  \fi  ##1}}%
     \def\sectionmark##1{\relax}}
 \makeatother
-\usepackage[bottom = 1 in]{geometry}
+%\usepackage{pdfpages}
 
 \input{Qcircuit}
 \usepackage{amsmath}
@@ -119,6 +119,9 @@
 \renewcommand{\subsubsectionautorefname}{\S}
 
 \begin{document}
+
+%\includepdf[pages={1}]{approval.pdf}
+
 \frontmatter
 
 \title{Quantum Phase Space Representations and Their Negativities}
@@ -134,7 +137,7 @@
 \previousdegrees{B.S., Physics, University of Oregon, 2011 \\
 B.S., Mathematics, University of Oregon, 2011}
 
-\date{April 2018}
+\date{May 2018}
 
 \maketitle
 
