@@ -113,7 +113,7 @@ The converse is also true: given any frame and its dual, they can be normalized
 \begin{align}\label{def-quasi-rep-frame}
 \sum_{\lambda \in \Lambda} F(\lambda) &= \id, & \Tr[D(\lambda)] &= 1,
 \end{align}
-for all $\lambda \in \Lambda$, so that \ref{def-quasi-rep2} defines a quasi-probability function on $\Lambda$. Thus, we can study properties of the frame elements by studying those of the mapping itself.
+for all $\lambda \in \Lambda$, so that \ref{def-quasi-rep2} defines a quasi-probability function on $\Lambda$. Thus, we can study properties of the mapping by studying those of the frame instead.
 
 %------------------------------------
 \subsection{Inevitability of negativity}
@@ -223,7 +223,7 @@ This modifies the orthogonality and completeness relations of the matrix element
 \int d\Omega\, \rep_{\lambda}(\Omega)_{\mu 0} \left( \rep_{\lambda'}(\Omega)_{\mu' 0} \right)^* &= \frac{d}{d_{\lambda}} \delta_{\lambda\lambda'} \delta_{\mu\mu'}, \label{thm:orthogonality-unnormalized} \\
 \sum_{\lambda,\mu} d_{\lambda} \rep_{\lambda}(\Omega)_{\mu 0} \left( \rep_{\lambda}(\Omega')_{\mu 0} \right)^* &= d\mathcal{K}(\Omega - \Omega'), \label{thm:completeness-unnormalized}
 \end{align}
-where $\mathcal{K}(\Omega - \Omega')$ acts like the delta distribution with respect to the unnormalized measure:\footnote{When the summation is not over the entire range of irreps $\lambda \in \hat{G}$, $\mathcal{K}(\Omega - \Omega')$ is never actually a delta distribution on $G/K$.}
+where $\mathcal{K}(\Omega - \Omega')$ acts like the delta distribution with respect to the unnormalized measure:\footnote{When the summation is not over the entire range of irreps that appear in $L^2(G/K)$, $\mathcal{K}(\Omega - \Omega')$ is not actually a delta distribution on $G/K$.}
 \begin{align}
 	\int d\Omega\, \mathcal{K}(\Omega - \Omega') f(\Omega') &= f(\Omega).
 \end{align}
